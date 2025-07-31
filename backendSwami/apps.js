@@ -13,7 +13,8 @@ const Redis = require('ioredis');
 const redisClient = new Redis(process.env.REDIS_URL); 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(cors({
-  origin: 'http://localhost:5173', // 👈 your React app's address
+  origin: ['http://localhost:5173',
+  'https://celebrated-eclair-e6ee30.netlify.app'], // 👈 your React app's address
   credentials: true               // 👈 required to accept cookies or headers
 }));
 app.use(express.json());
