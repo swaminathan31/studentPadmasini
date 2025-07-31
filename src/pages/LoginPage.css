@@ -1,0 +1,271 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Main Container */
+.login-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-top: 80px;
+}
+
+/* Left Side - Illustration */
+.login-illustration {
+  flex: 1;
+  padding: 40px;
+  color: rgb(9, 9, 9);
+  text-align: center;
+}
+
+.login-illustration img {
+  max-width: 80%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.login-illustration h1 {
+  margin-top: 20px;
+  font-size: 28px;
+}
+
+.login-illustration p {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+/* Right Side - Login Form */
+.login {
+  flex: 1;
+  margin-top: 30px;
+  padding: 50px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: -5px 0 20px rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  background: linear-gradient(to bottom, #e9fdec, #ffffff);flex: 1;
+  padding: 50px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login h2 {
+  background-color: #0e651f;
+  color: white;
+  font-size: 24px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Form Box */
+.login-form-box {
+  width: 100%;
+  max-width: 600px; /* Increased width */
+  background: linear-gradient(to bottom, #d1fad7, #cbd7c3);flex: 1;
+  padding: 40px 40px; /* Increased padding */
+  border-radius: 16px;
+ height: 100%;
+ max-height: 400px; ;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  margin: 20px auto; /* Center horizontally with top margin */
+}
+
+/* Inputs */
+form input[type="email"],
+form input[type="password"],
+.password-container input {
+  width: 100%;
+  padding: 14px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+/* Password Icon */
+.password-container {
+  position: relative;
+}
+
+.icon.inside {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  color: #333;
+}
+
+/* Button */
+.login-form-actions {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.login-form-actions button[type="submit"] {
+ width: 100%;
+  padding: 14px;
+  background-color: #28a745;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 10px;
+}
+
+.login-form-actions button[type="submit"]:hover {
+  background-color: #1c7e32;
+}
+
+/* Forgot Password */
+.login-forgot-password {
+  color: #1e49f6;
+  font-size: 15px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.login-forgot-password:hover {
+  color: #1537c1;
+}
+
+/* Register Link */
+.login-text {
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
+  color: #333;
+}
+
+.login-text a {
+  color: #1dad0d;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.login-text a:hover {
+  text-decoration: underline;
+}
+
+/* WhatsApp Chat Button */
+.whatsapp-chat-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #07d252;
+  color: white;
+  border-radius: 50px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  z-index: 1000;
+  animation: bounce 2s infinite;
+}
+
+/* Hover effect */
+.whatsapp-chat-button:hover {
+  background-color: #1ebe5d;
+  transform: scale(1.05);
+  animation-play-state: paused; /* Pause bounce on hover */
+}
+
+/* WhatsApp icon size */
+.whatsapp-icon {
+  width: 24px;
+  height: 24px;
+}
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+    margin-top: 60px;
+    height: auto;
+  }
+
+  .login-illustration,
+  .login {
+    flex: unset;
+    width: 100%;
+    padding: 20px;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .login-illustration img {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .login-illustration h1 {
+    font-size: 22px;
+  }
+
+  .login-illustration p {
+    font-size: 14px;
+  }
+
+  .login h2 {
+    font-size: 20px;
+    padding: 8px 16px;
+  }
+
+  .login-form-box {
+    width: 100%;
+    padding: 25px;
+    max-height: unset;
+    margin: 10px auto;
+  }
+
+  form input[type="email"],
+  form input[type="password"],
+  .password-container input {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .login-form-actions {
+    gap: 14px;
+  }
+
+  .login-form-actions button[type="submit"] {
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  .login-forgot-password {
+    font-size: 14px;
+  }
+
+  .login-text {
+    font-size: 13px;
+  }
+
+  .whatsapp-chat {
+    padding: 10px 16px;
+    font-size: 13px;
+    bottom: 15px;
+    right: 15px;
+  }
+}
