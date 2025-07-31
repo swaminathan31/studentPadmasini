@@ -29,7 +29,8 @@ router.post('/newUser', upload.single('photo'), async (req, res) => {
     const User = connection.model('studentUserDetail', userSchema,'studentUserDetail'); 
       let photoUrl = null;
     if (req.file) {
-      photoUrl = `http://localhost:3000/uploads/${req.file.filename}`;
+      // photoUrl = `http://localhost:3000/uploads/${req.file.filename}`;
+      photoUrl = `https://studentpadmasini.onrender.com/uploads/${req.file.filename}`;
     }
 
     const newUser = new User({
