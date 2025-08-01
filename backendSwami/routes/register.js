@@ -28,8 +28,10 @@ router.post('/newUser', upload.single('photo'), async (req, res) => {
     const connection = await getConnection(dbName);
     const User = connection.model('studentUserDetail', userSchema,'studentUserDetail'); 
       let photoUrl = null;
-    const baseUrl = req.protocol + '://' + req.get('host');
-photoUrl = `${baseUrl}/uploads/${req.file.filename}`;
+   if (req.file) {
+  const baseUrl = req.protocol + '://' + req.get('host');
+  photoUrl = `${baseUrl}/uploads/${req.file.filename}`;
+}
 
     const newUser = new User({
       firstname,
