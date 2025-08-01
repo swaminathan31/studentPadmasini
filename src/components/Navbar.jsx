@@ -22,7 +22,8 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    fetch(`http://localhost:3000/logout`, {
+    // fetch(`http://localhost:3000/logout`, {
+      fetch(`https://studentpadmasini.onrender.com/logout`, {
       method: "POST",
       credentials: "include",
     })

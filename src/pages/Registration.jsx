@@ -127,7 +127,8 @@ const sendUserDetails=async () => {
   }
 
   try {
-    const response = await fetch('http://localhost:3000/register/newUser', {
+    // const response = await fetch('http://localhost:3000/register/newUser', {
+      const response = await fetch('https://studentpadmasini.onrender.com/register/newUser', {
       method: 'POST',
       body: formData, // Do not set Content-Type; browser sets it with boundary
     });
@@ -148,7 +149,7 @@ const sendUserDetails=async () => {
 };
   const handleFinalSubmit = (e) => {
     e.preventDefault();
-    if (!photo || !dob || !gender || !selectedCourse) return alert("Please fill in all required fields.");
+    if ( !dob || !gender || !selectedCourse) return alert("Please fill in all required fields.");//removed !photo||
     if ((selectedCourse === "JEE" || selectedCourse === "NEET") && !selectedStandard) return alert("Please select your standard (11th or 12th).");
     const updatedUser = JSON.parse(sessionStorage.getItem("registeredUser") || "{}");
     updatedUser.dob = dob;
@@ -157,14 +158,14 @@ const sendUserDetails=async () => {
     updatedUser.standard = selectedStandard;
     updatedUser.role = selectedCourse.toLowerCase();
     if (!isUpgrade) {
-      if (!photo || !dob || !gender) return alert("Please fill in all required fields.");
+      if (!dob || !gender) return alert("Please fill in all required fields.");//removed !photo||
       updatedUser.photo = photo;
       updatedUser.dob = dob;
       updatedUser.gender = gender;
     }
 
     sessionStorage.setItem("registeredUser", JSON.stringify(updatedUser));
-    sendUserDetails()
+    
     setStep(3);
   };
 
@@ -202,9 +203,9 @@ const sendUserDetails=async () => {
       user.startDate = startDate.toISOString().split("T")[0];
       user.endDate = endDate.toISOString().split("T")[0];
       sessionStorage.setItem("registeredUser", JSON.stringify(user));
-
+      sendUserDetails()
       alert(`Login successful! Welcome ${user.firstname}`);
-      navigate("/login");
+      
     }, 2000);
   };
 

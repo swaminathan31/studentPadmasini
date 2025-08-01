@@ -25,7 +25,8 @@ const LoginPage = () => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    fetch("http://localhost:3000/login", {
+    // fetch("http://localhost:3000/login", {
+      fetch("https://studentpadmasini.onrender.com/login", {
       method: "POST",
       credentials: "include",
       headers: {

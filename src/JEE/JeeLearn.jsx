@@ -111,7 +111,8 @@ const JeeLearn = () => {
     const standard = stringStandard?.replace(/\D/g, "");
 
     fetch(
-      `http://localhost:3000/getSubjectDetails?courseName=${courseName}&subjectName=${subjectName}&standard=${standard}`,
+      // `http://localhost:3000/getSubjectDetails?courseName=${courseName}&subjectName=${subjectName}&standard=${standard}`,
+      `https://studentpadmasini.onrender.com/getSubjectDetails?courseName=${courseName}&subjectName=${subjectName}&standard=${standard}`,
       {
         method: "GET",
         credentials: "include",
