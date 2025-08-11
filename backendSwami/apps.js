@@ -16,6 +16,11 @@ app.use(cors({
   'https://celebrated-eclair-e6ee30.netlify.app'], // 👈 your React app's address
   credentials: true               // 👈 required to accept cookies or headers
 }));
+app.options("*", cors({
+  origin: "https://celebrated-eclair-e6ee30.netlify.app",
+  credentials: true
+}));
+
 const redisClient = new Redis(process.env.REDIS_URL); 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
