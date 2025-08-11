@@ -68,7 +68,7 @@ router.get('/checkSession', (req, res) => {
   if (req.session.user) {
     return res.json({ loggedIn: true, user: req.session.user });
   } else {
-    return res.status(401).json({ loggedIn: false });
+    return res.json({ loggedIn: false });
   }
 });
 

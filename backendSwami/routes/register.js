@@ -18,7 +18,7 @@ const upload = multer({ storage: storage });
 //adding new user
 router.post('/newUser', upload.single('photo'), async (req, res) => {
   console.log("inside register user")
-  console.log("req.file:", req.file);
+  //console.log("req.file:", req.file);
   try {
     const {
       firstname, lastname, email, password,
