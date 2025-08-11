@@ -6,6 +6,7 @@ const cors = require('cors');
 const path = require('path');
 const app = express();
 const PORT = 3000;
+app.set('trust proxy', 1); 
 const session = require('express-session');
 const RedisStore = require('connect-redis');
 const RedisSessionStore = RedisStore(session);
