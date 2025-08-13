@@ -42,9 +42,9 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {//change this according to localhosting and deploying 
-    secure: false, // Set to true if using HTTPS
+    secure: true, // Set to true if using HTTPS
     httpOnly: true,
-    sameSite:'lax',//Set none if use true in secure
+    sameSite:'none',//Set none if use true in secure
     maxAge: 1000 *60 *60 *24// 1 day
   }
 }));
