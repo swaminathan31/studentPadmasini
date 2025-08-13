@@ -13,11 +13,16 @@ const RedisSessionStore = RedisStore(session);
 const Redis = require('ioredis');
 app.use(cors({
   origin: ['http://localhost:5173',
-  'https://celebrated-eclair-e6ee30.netlify.app'], // 👈 your React app's address
+  'https://celebrated-eclair-e6ee30.netlify.app',
+'https://padmasini.com',
+'https://www.padmasini.com'], // 👈 your React app's address
   credentials: true               // 👈 required to accept cookies or headers
 }));
 app.options('/', cors({
-  origin: "https://celebrated-eclair-e6ee30.netlify.app",
+  origin: ['http://localhost:5173',
+  'https://celebrated-eclair-e6ee30.netlify.app',
+'https://padmasini.com',
+'https://www.padmasini.com'],
   credentials: true
 }));
 
@@ -36,10 +41,10 @@ app.use(session({
   secret: 'your_session_secret', // 🔐 use strong secret in .env
   resave: false,
   saveUninitialized: false,
-  cookie: {
-    secure: true, // Set to true if using HTTPS
+  cookie: {//change this according to localhosting and deploying 
+    secure: false, // Set to true if using HTTPS
     httpOnly: true,
-    sameSite:'none',
+    sameSite:'lax',//Set none if use true in secure
     maxAge: 1000 *60 *60 *24// 1 day
   }
 }));
