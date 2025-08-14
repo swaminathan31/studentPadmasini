@@ -17,7 +17,7 @@ const Navbar = () => {
   const [coursesOpen, setCoursesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
-
+  const {login}=useUser()
   const { currentUser, logout } = useUser(); // ✅ Uses custom hook correctly
   const navigate = useNavigate();
 
@@ -42,7 +42,41 @@ const Navbar = () => {
       })
       .catch((err) => console.log(err));
   };
-
+ useEffect(()=>{
+  // fetch('http://localhost:3000/checkSession',{
+    fetch(`https://studentpadmasini.onrender.com/checkSession`, {
+    method:"GET",
+    credentials:'include'
+  }).then(resp=> resp.json())
+  .then(data=>{
+    console.log(data)
+    if(data.loggedIn===true){
+      login(data.user)
+      localStorage.clear();
+       console.log(localStorage.getItem('currentUser'))
+        localStorage.setItem('currentUser', JSON.stringify(data.user));
+      //  logout(localStorage.getItem('currentUser'))
+       console.log(localStorage.getItem('currentUser'))
+       console.log(currentUser)
+    }
+    if(data.loggedIn===false){
+      console.log('it came here before seeing user')
+const existingUser=localStorage.getItem('currentUser')
+  if(existingUser){
+    console.log('it came here and deleted the user')
+    localStorage.removeItem("currentUser");
+          localStorage.removeItem("jeeSubjectCompletion");
+          localStorage.removeItem("currentClassJee");
+          localStorage.clear(); // Clear all local storage
+          logout();
+          setCoursesOpen(false);
+          setUserDropdownOpen(false);
+          navigate("/login");
+  }
+    }
+  })
+  
+ },[])
   useEffect(() => {
     const handleClickOutside = (event) => {
       const dropdowns = document.querySelectorAll(".dropdown-toggle, .dropdown-menu");

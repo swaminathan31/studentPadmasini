@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './NeetExplanation.css';
 import { FaPlay, FaPause, FaCheckCircle } from 'react-icons/fa';
-
+import katex from 'katex';
+import parse from 'html-react-parser';
+import 'katex/dist/katex.min.css'; 
 const NeetExplanation = ({
   explanation = '',
   subtopicTitle = '',
@@ -135,7 +137,7 @@ const NeetExplanation = ({
       } catch (err) {
         return <span key={index} style={{ color: 'red' }}>{latex}</span>;
       }
-    } else {formula
+    } else {
       return <span key={index}>{part.replaceAll(TEMP_DOLLAR, '$')}</span>;
     }
   });

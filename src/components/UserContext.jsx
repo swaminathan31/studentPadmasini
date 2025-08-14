@@ -8,7 +8,8 @@ export const UserProvider = ({ children }) => {
 
   // Check session or storage
   useEffect(() => {
-    const storedUser = JSON.parse(sessionStorage.getItem("currentUser"));
+    console.log('hiiiiiiiiiiiiiiiiiii')
+    const storedUser = JSON.parse(localStorage.getItem("currentUser"));
     if (storedUser) {
       setCurrentUser(storedUser);
     }
@@ -16,12 +17,12 @@ export const UserProvider = ({ children }) => {
 
   const login = (user) => {
     setCurrentUser(user);
-    sessionStorage.setItem("currentUser", JSON.stringify(user));
+    localStorage.setItem("currentUser", JSON.stringify(user));
   };
 
   const logout = () => {
     setCurrentUser(null);
-    sessionStorage.removeItem("currentUser");
+    localStorage.removeItem("currentUser");
   };
 
   return (
