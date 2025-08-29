@@ -4,13 +4,20 @@ const router = express.Router();
 const getConnection = require("../utils/dbConnection");
 const userSchema = require("../models/User");
 const { redisClient } = require("../apps");
-
+// const getConnection = require('../utils/dbConnection');
 // ✅ Send OTP
 router.post("/send-otp", async (req, res) => {
   try {
     const { email } = req.body;
     if (!email) return res.status(400).json({ message: "Email is required" });
+const db = await getConnection("studentUsers");
+    const con = db.model("studentUserDetail", userSchema, "studentUserDetail");
 
+    const findUser = await con.findOne({ email });
+    console.log(findUser)
+    if (findUser) {
+      return res.status(400).json({ message: 'User already exists' });
+    }
     // Generate 6-digit OTP
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
 

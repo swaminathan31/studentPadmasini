@@ -45,8 +45,8 @@ const Home = () => {
 }, []);
 
  useEffect(()=>{
-  fetch('http://localhost:3000/checkSession',{
-    // fetch(`https://studentpadmasini.onrender.com/checkSession`, {
+  // fetch('http://localhost:3000/checkSession',{
+    fetch(`https://studentpadmasini.onrender.com/checkSession`, {
     //  fetch(`https://padmasini-prod-api.padmasini.com/checkSession`, {
     method:"GET",
     credentials:'include'

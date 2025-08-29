@@ -25,8 +25,8 @@ const LoginPage = () => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    fetch("http://localhost:3000/login", {
-      // fetch("https://studentpadmasini.onrender.com/login", {
+    // fetch("http://localhost:3000/login", {
+      fetch("https://studentpadmasini.onrender.com/login", {
       // fetch("https://padmasini-prod-api.padmasini.com/login", {
       method: "POST",
       credentials: "include",
@@ -65,7 +65,8 @@ const LoginPage = () => {
   }
 
   try {
-    const resp = await fetch("http://localhost:3000/forgot-password", {
+    // const resp = await fetch("http://localhost:3000/forgot-password", {
+    const resp = await fetch("https://studentpadmasini.onrender.com/forgot-password", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

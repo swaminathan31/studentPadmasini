@@ -48,12 +48,14 @@ const [paymentSuccess, setPaymentSuccess] = useState(false);
   const queryParams = new URLSearchParams(location.search);
   const stepFromURL = parseInt(queryParams.get("step"));
   const isUpgrade = queryParams.get("upgrade") === "true";
+  const [isVerified, setIsVerified] = useState(false);
 useEffect(()=>{
 // const existingUser=localStorage.getItem('currentUser')
 // if(existingUser){
 //   console.log("user already logged in")
 //   navigate('/home')
 // }
+
 
 
    const useMe1=localStorage.getItem("registeredUser")
@@ -130,8 +132,8 @@ const sendUserDetails=async () => {
   }
 console.log(selectedCourse,"  ",selectedStandard)
   try {
-    const response = await fetch('http://localhost:3000/register/newUser', {
-      // const response = await fetch('https://studentpadmasini.onrender.com/register/newUser', {
+    // const response = await fetch('http://localhost:3000/register/newUser', {
+      const response = await fetch('https://studentpadmasini.onrender.com/register/newUser', {
       // const response = await fetch('https://padmasini-prod-api.padmasini.com/register/newUser', {
       method: 'POST',
       body: formData, // Do not set Content-Type; browser sets it with boundary
@@ -213,11 +215,13 @@ if (selectedStandard === "Both (11th + 12th)") {
     else setEmailError("");
     setEmailError(""); 
     try {
-    const res = await fetch("http://localhost:3000/auth/send-otp", {
+    // const res = await fetch("http://localhost:3000/auth/send-otp", {
+      const res = await fetch("https://studentpadmasini.onrender.com/auth/send-otp", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email }),
     });
+    console.log("status:", res.status);
     const data = await res.json();
     if (res.ok) {
       setOtpSent(true);
@@ -237,7 +241,8 @@ if (selectedStandard === "Both (11th + 12th)") {
  e.preventDefault();
   if (!otp) return setOtpError("Please enter OTP");
    try {
-    const res = await fetch("http://localhost:3000/auth/verify-otp", {
+    // const res = await fetch("http://localhost:3000/auth/verify-otp", {
+      const res = await fetch("https://studentpadmasini.onrender.com/auth/verify-otp", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, otp }),
@@ -245,6 +250,8 @@ if (selectedStandard === "Both (11th + 12th)") {
 
     const data = await res.json();
     if (res.ok) {
+      setIsVerified(true);
+
       localStorage.setItem("emailVerification", "success");
       alert("Email verified successfully ✅");
     } else {
@@ -355,9 +362,10 @@ const currentUserCourses=()=>{
       placeholder="Enter OTP" 
       value={otp} 
       onChange={(e) => setOtp(e.target.value)} 
+      disabled={isVerified}
     />
     {otpError && <span className="error-message">{otpError}</span>}
-    <button type="none" className="verifyOtp" onClick={verifyOtp}>verify OTP</button>
+    <button type="button" className={`verifyOtp ${isVerified ? "verified" : ""}`}  onClick={verifyOtp} disabled={isVerified}> {isVerified ? "Verified ✅" : "Verify OTP"}</button>
   </>
 )}
 

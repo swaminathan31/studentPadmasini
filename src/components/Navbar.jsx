@@ -22,8 +22,8 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    fetch(`http://localhost:3000/logout`, {
-      // fetch(`https://studentpadmasini.onrender.com/logout`, {
+    // fetch(`http://localhost:3000/logout`, {
+      fetch(`https://studentpadmasini.onrender.com/logout`, {
       // fetch(`https://padmasini-prod-api.padmasini.com/logout`, {
       method: "POST",
       credentials: "include",
@@ -44,8 +44,8 @@ const Navbar = () => {
       .catch((err) => console.log(err));
   };
  useEffect(()=>{
-  fetch('http://localhost:3000/checkSession',{
-    // fetch(`https://studentpadmasini.onrender.com/checkSession`, {
+  // fetch('http://localhost:3000/checkSession',{
+    fetch(`https://studentpadmasini.onrender.com/checkSession`, {
     //  fetch(`https://padmasini-prod-api.padmasini.com/checkSession`, {
     method:"GET",
     credentials:'include'
