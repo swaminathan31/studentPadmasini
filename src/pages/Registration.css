@@ -1,0 +1,775 @@
+/* Container for both sides */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.registration-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-top: 80px;
+}
+/* Container Layout */
+.registration-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-top: 80px;
+}
+
+/* Illustration Section */
+.registration-illustration {
+  flex: 1;
+  padding: 40px;
+  color: rgb(9, 9, 9);
+  text-align: center;
+}
+
+.registration-illustration img {
+  max-width: 80%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.registration-illustration h1 {
+  margin-top: 20px;
+  font-size: 28px;
+}
+
+.registration-illustration p {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+/* Right side - registration form */
+.registration {
+  flex: 1;
+  margin-top: 30px;
+  padding: 50px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: -5px 0 20px rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  background: linear-gradient(to bottom, #e9fdec, #ffffff);
+}
+.registration h2 {
+  background-color: #28a745; /* Green header */
+  color: white;
+  font-size: 24px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.Register-form-box {
+  width: 100%;
+  max-width: 600px; /* Increased width */
+  background: linear-gradient(to bottom, #d1fad7, #cbd7c3);flex: 1;
+  padding: 40px 40px; /* Increased padding */
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  margin: 20px auto; /* Center horizontally with top margin */
+}
+/* Form Inputs */
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form input[type="password"] {
+    width: 100%;
+  padding: 14px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.name-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.name-container input {
+  width: 100%;
+}
+
+.half-width {
+  width: 100%;
+  max-width: 350px;
+  padding: 5px;
+  border-radius: 3px;
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.password-container {
+  position: relative;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.password-container input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #a3e5a3;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.icon.inside {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  color: #28a745;
+}
+
+/* Form Actions Section (Checkbox) */
+.form-actions {
+margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+/* Checkbox Container */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: -10px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Checkbox Styling */
+.checkbox-container input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+/* Checkbox Label */
+.checkbox-container label {
+  margin: 0;
+  font-size: 15px;
+  text-align: center;
+}
+
+/* Terms and Conditions Link */
+.checkbox-container label link {
+  color: #28a745;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.checkbox-container label a:hover {
+  color: #1c7e32;
+}
+.terms-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.terms-popup {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  text-align: center;
+  max-width: 400px;
+}
+
+.terms-popup p {
+  margin-bottom: 20px;
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.terms-popup button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #3498db;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+/* Submit Button */
+form button[type="submit"] {
+  width: 100%;
+  padding: 14px;
+  background-color: #28a745;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: -5px;
+}
+.verifyOtp{
+  width: 100%;
+  padding: 10px;
+  margin: 5px;
+  background-color: #28a745;
+  color: white;
+  font-size: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: -5px;
+}
+form button[type="submit"]:hover {
+  background-color: #1c7e32;
+}
+
+.login-text {
+  text-align: center;
+  font-size: 16px;
+  margin-top: -5px;
+}
+
+.login-text a {
+  width: 100%;
+  padding: 10px;
+  color: #1c7e32;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s ease-in-out;
+}
+/* Wrapper Flexbox */
+.student-details h2 {
+  background-color: #28a745; /* Green header */
+  color: white;
+  font-size: 24px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin: 10px auto; /* centers horizontally */
+  text-align: center;
+  width: fit-content; /* adjusts width to content */
+  max-width: 90%; /* prevents it from getting too wide */
+}
+
+
+.student-details-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+  flex-wrap: wrap;
+  background: linear-gradient(to bottom, #d1fad7, #cbd7c3);
+}
+
+/* Profile Picture Upload Section */
+.left-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 250px;
+  
+}
+
+.upload-text {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.custom-upload {
+  width: 150px;
+  height: 150px;
+  background-color: #c3f2a6;
+  border-radius: 50%;
+  border: 2px solid #28a745; /* Green border */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: #01270a;
+  cursor: pointer;
+  overflow: hidden;
+  gap: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.upload-placeholder {
+  font-size: 48px;
+  color: rgb(1, 48, 1);
+}
+
+.profile-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hidden-input {
+  display: none;
+}
+
+/* Right Form Section */
+.right-section {
+  max-width: 600px;
+  width: 100%;
+
+}
+
+.right-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.right-section input,
+.right-section select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #28a745; /* Green */
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.right-section button {
+  width: 100%;
+  padding: 12px;
+  background-color: #28a745; /* Green */
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.right-section button:hover {
+  background-color: #1c7e32; /* Darker green */
+}
+/* Navigation Buttons */
+.student-navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  gap: 60px;
+}
+.student-navigation-buttons button {
+  width: 140px;
+  height: 45px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 6px;
+  border: 2px solid #28a745;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.student-navigation-buttons button:first-child {
+  background-color: #fff;
+  color: #28a745;
+}
+
+.student-navigation-buttons button:last-child {
+  background-color: #28a745;
+  color: #fff;
+  margin-top: 0px;
+}
+
+.student-navigation-buttons button:hover {
+  opacity: 0.9;
+}
+.payment-selection {
+  background: linear-gradient(to bottom, #d1fad7, #cbd7c3);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  height: 100%;
+  max-width: 600px;
+  margin: auto;
+  margin-top: 15px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.payment-section h2 {
+  background-color: #28a745; /* Green header */
+  color: white;
+  font-size: 24px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  text-align: center;
+ width: fit-content;
+   align-items: center;
+  margin: auto;
+}
+
+.plans {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 25px;
+  margin-top: 20px;
+  font-weight: 500;
+}
+
+.plans label {
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+}
+
+.promo-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  
+}
+
+.promo-section input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+.promo-section button {
+  padding: 10px 16px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s ease;
+  height: 40px;
+}
+
+.promo-section button:hover {
+  background-color: #218838;
+}
+
+/* Navigation Buttons */
+.plans-navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  gap: 60px;
+}
+.plans-navigation-buttons button {
+  width: 140px;
+  height: 45px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 6px;
+  border: 2px solid #28a745;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.plans-navigation-buttons button:first-child {
+  background-color: #fff;
+  color: #28a745;
+}
+
+.plans-navigation-buttons button:last-child {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.plans-navigation-buttons button:hover {
+  opacity: 0.9;
+}
+
+.payment-options-modal {
+  padding: 1.5rem;
+  border: 2px solid #4caf50;
+  border-radius: 10px;
+  background-color: #ffffff;
+  width: fit-content;
+  margin: auto;
+  text-align: center;
+  margin-top: 20px;
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.2);
+}
+
+.payment-options-modal h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  color: #000;
+}
+
+.methods {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.methods button {
+  padding: 0.6rem 1.2rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+  min-width: 130px;
+}
+
+.methods button:hover {
+  background-color: #218838;
+}
+
+/* Optional inputs for UPI / Bank / Card */
+.payment-options-modal input,
+.payment-options-modal select {
+  width: 100%;
+  max-width: 300px;
+  margin: 0.5rem auto;
+  padding: 0.6rem;
+  border: 1px solid #4caf50;
+  border-radius: 6px;
+  font-size: 1rem;
+  display: block;
+}
+
+/* Final Pay Now button */
+.payment-options-modal > button:last-of-type {
+  margin-top: 1rem;
+  padding: 0.8rem 1.5rem;
+  background-color: #2e7d32;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.payment-options-modal > button:last-of-type:hover {
+  background-color: #1b5e20;
+}
+
+/* WhatsApp Chat Button */
+.whatsapp-chat-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #07d252;
+  color: white;
+  border-radius: 50px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  z-index: 1000;
+  animation: bounce 2s infinite;
+}
+
+/* Hover effect */
+.whatsapp-chat-button:hover {
+  background-color: #1ebe5d;
+  transform: scale(1.05);
+  animation-play-state: paused; /* Pause bounce on hover */
+}
+
+/* WhatsApp icon size */
+.whatsapp-icon {
+  width: 24px;
+  height: 24px;
+}
+/* ---------- MOBILE RESPONSIVE STYLES ---------- */
+@media (max-width: 768px) {
+  .registration-container {
+    flex-direction: column;
+    margin-top: 80px;
+    height: auto;
+  }
+
+  .registration-illustration,
+  .registration {
+    width: 100%;
+    padding: 20px;
+    margin-top: 0;
+  }
+
+  .registration-illustration img {
+    max-width: 90%;
+  }
+
+  .Register-form-box {
+    padding: 20px;
+    max-width: 100%;
+    margin: 10px auto;
+  }
+
+  .name-container {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .half-width {
+    max-width: 100%;
+  }
+
+  .form-actions {
+    align-items: center;
+  }
+
+  .form-actions button[type="submit"] {
+    max-width: 100%;
+  }
+
+  .student-details-wrapper {
+    width: 100%;
+    padding: 20px;
+    margin-top: 0;
+  }
+
+  .left-section {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .custom-upload {
+    width: 120px;
+    height: 120px;
+    font-size: 24px;
+    margin: 10px auto;
+  }
+
+  .right-section {
+    max-width: 400px;
+    width: 100%;
+  }
+
+  .right-section form {
+    padding: 0 10px;
+  }
+
+  .payment-selection {
+    width: 100%;
+    max-width: 320px;
+    height: 100%;
+    max-height: 900px;
+    margin-top: 0;
+  }
+.payment-section h2 {
+    font-size: 20px;
+    padding: 8px 16px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .promo-section {
+    flex-direction: column;
+  }
+
+  .promo-section input,
+  .promo-section button {
+    width: 100%;
+  }
+.plans{
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 0px;
+  }
+  .methods {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .methods button {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .payment-options-modal input,
+  .payment-options-modal select {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .terms-popup {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .terms-popup p {
+    font-size: 14px;
+  }
+
+  .login-text a {
+    font-size: 16px;
+  }
+
+  .whatsapp-chat {
+    right: 15px;
+    bottom: 15px;
+    padding: 10px 14px;
+    font-size: 12px;
+  }
+
+  .registration h2,
+  .student-details h2,
+  .payment-section h2 {
+    font-size: 20px;
+    padding: 8px 16px;
+  }
+
+  form input[type="text"],
+  form input[type="email"],
+  form input[type="tel"],
+  form input[type="password"] {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .right-section button {
+    font-size: 16px;
+  }
+  
+}
+
