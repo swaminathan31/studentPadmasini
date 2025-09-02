@@ -6,7 +6,7 @@ import physicsImg from "../assets/physics.jpg";
 import chemistryImg from "../assets/chemistry.jpg";
 import zoologyImg from "../assets/zoology.jpg";
 import botanyImg from "../assets/botany.jpg";
-
+import { useUser } from "../components/UserContext"; 
 const subjectList = [
   { name: "Physics", image: physicsImg, certified: false },
   { name: "Chemistry", image: chemistryImg, certified: false },
@@ -22,12 +22,12 @@ const Subjects = () => {
   const [endDate, setEndDate] = useState("");
   const [subjectCompletion, setSubjectCompletion] = useState(subjectList);
   const learningPathRef = useRef(null);
-
+const {login}=useUser()
   useEffect(() => {
     console.log(JSON.parse(localStorage.getItem("currentUser")))
     const storedUser = JSON.parse(localStorage.getItem("currentUser"));
     if (storedUser) {
-      const stdData = storedUser.selectedStandard;
+      let stdData = storedUser.selectedCourse?.NEET;
 
       // Handle string
       if (typeof stdData === "string") {
@@ -41,6 +41,8 @@ const Subjects = () => {
           localStorage.setItem("currentClass", stdData[0]);
         } else {
           setStandard(stdData);
+          const savedClass = localStorage.getItem("currentClassJee");
+        if (savedClass) setSelectedClass(savedClass);
         }
       }
       const formatDate = (dateStr) => {
@@ -68,8 +70,8 @@ const Subjects = () => {
     }
   };
  useEffect(()=>{
-  // fetch('http://localhost:3000/checkSession',{
-    fetch(`https://studentpadmasini.onrender.com/checkSession`, {
+  fetch('http://localhost:3000/checkSession',{
+    // fetch(`https://studentpadmasini.onrender.com/checkSession`, {
     //  fetch(`https://padmasini-prod-api.padmasini.com/checkSession`, {
     method:"GET",
     credentials:'include'
@@ -251,7 +253,7 @@ const existingUser=localStorage.getItem('currentUser')
                         navigate("/NeetLearn", {
                           state: {
                             subject: subject.name,
-                            selectedClass: standard === "both" ? selectedClass : standard,
+                             selectedClass: Array.isArray(standard) ? selectedClass : standard,
                           },
                         })}
                       }

@@ -20,8 +20,8 @@ const { token } = useParams();
   }
 
   try {
-    // const res = await fetch(`http://localhost:3000/reset-password/${token}`, {
-    const res = await fetch(`https://studentpadmasini.onrender.com/reset-password/${token}`, {
+    const res = await fetch(`http://localhost:3000/reset-password/${token}`, {
+    // const res = await fetch(`https://studentpadmasini.onrender.com/reset-password/${token}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

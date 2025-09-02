@@ -19,11 +19,6 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin-top: 80px;
 }
-.verifyOtp.verified {
-  background-color: #4CAF50; /* Green */
-  cursor: not-allowed;
-  opacity: 0.7;
-}
 
 /* Illustration Section */
 .registration-illustration {
@@ -231,22 +226,7 @@ form button[type="submit"] {
   transition: background 0.3s ease;
   margin-top: -5px;
 }
-.verifyOtp{
-  width: 100%;
-  padding: 10px;
-  margin: 5px;
-  background-color: #28a745;
-  color: white;
-  font-size: 15px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  margin-top: -5px;
-}
-form button[type="submit"]:hover {
-  background-color: #1c7e32;
-}
+
 
 .login-text {
   text-align: center;
@@ -778,3 +758,250 @@ form button[type="submit"]:hover {
   
 }
 
+.checkbox-section {
+  margin: 20px 0;
+  padding: 15px 20px;
+  border-left: 4px solid #07d252;
+  background: #f4f3ff;
+  border-radius: 10px;
+  width: 100%;          /* full width */
+  max-width: 500px;     /* control maximum width */
+  box-sizing: border-box;
+}
+
+
+.checkbox-section p {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #2d3436;
+}
+
+.checkbox-section label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 30px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #2c3e50;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.checkbox-section .options {
+  display: flex;
+  justify-content: center; /* centers labels */
+  gap: 30px; /* spacing between JEE and NEET */
+}
+
+
+.checkbox-section label:hover {
+  color: #07d252;
+}
+
+.checkbox-section input[type="checkbox"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #07d252;
+  border-radius: 50%; /* circular style */
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+
+.checkbox-section input[type="checkbox"]:checked {
+  background-color: #07d252;
+  border-color: #07d252;
+}
+
+.checkbox-section input[type="checkbox"]:checked::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+/* ================= Animations ================= */
+
+/* Fade-in for main container */
+.registration-container {
+  animation: fadeInUp 0.9s ease-out;
+}
+
+/* Illustration image fade & zoom */
+.registration-illustration img {
+  animation: zoomIn 1.2s ease-out;
+}
+
+/* Form box slide-in */
+.Register-form-box {
+  animation: slideUp 1s ease-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.Register-form-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Input focus animation */
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form input[type="password"] {
+  transition: all 0.3s ease;
+}
+form input:focus {
+  border-color: #07d252;
+  box-shadow: 0 0 8px rgba(7, 210, 82, 0.3);
+  transform: scale(1.02);
+}
+
+/* Buttons micro-interaction */
+form button[type="submit"],
+.right-section button,
+.methods button {
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+form button[type="submit"]:hover,
+.right-section button:hover,
+.methods button:hover {
+  transform: scale(1.05);
+}
+
+/* Checkbox smooth tick animation */
+.checkbox-section input[type="checkbox"] {
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+.checkbox-section input[type="checkbox"]:checked::after {
+  animation: popIn 0.3s ease forwards;
+}
+
+/* WhatsApp button bounce (already there, refining) */
+.whatsapp-chat-button {
+  animation: bounce 2s infinite;
+}
+.whatsapp-chat-button:hover {
+  transform: scale(1.08) rotate(3deg);
+}
+
+/* Student Details wrapper fade-in */
+.student-details-wrapper {
+  animation: fadeInScale 1s ease-out;
+}
+
+/* Payment modal slide down */
+.payment-options-modal {
+  animation: slideDown 0.8s ease-out;
+}
+
+/* ================= Keyframes ================= */
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes popIn {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-8px); }
+  60% { transform: translateY(-4px); }
+}
+
+/* Common styles for buttons */
+.sendOtp,
+.verifyOtp {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+/* Send OTP button */
+.sendOtp {
+  background: #28a745;
+  color: #fff;
+}
+.sendOtp:hover:not(:disabled) {
+  background: #1e7e34;
+}
+.sendOtp:disabled {
+  background: #20c997;
+  cursor: not-allowed;
+}
+
+/* Verify OTP button */
+.verifyOtp {
+  background: #28a745;
+  color: #fff;
+}
+.verifyOtp:hover:not(:disabled) {
+  background: #1e7e34;
+}
+.verifyOtp.verified {
+  background: #20c997;
+  cursor: default;
+}
+
+/* OTP input */
+input[type="text"][placeholder="Enter OTP"] {
+  padding: 10px 14px;
+  font-size: 15px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  margin-right: 10px;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+input[type="text"][placeholder="Enter OTP"]:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.4);
+}
+input[type="text"][placeholder="Enter OTP"]:disabled {
+  background: #f0f0f0;
+  color: #777;
+}
+
+/* Error message */
+.error-message {
+  color: #e74c3c;
+  font-size: 13px;
+  margin-top: 5px;
+  display: block;
+}

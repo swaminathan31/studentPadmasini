@@ -5,7 +5,7 @@ import "./JEE.css";
 import physicsImg from "../assets/physics.jpg";
 import chemistryImg from "../assets/chemistry.jpg";
 import mathsImg from "../assets/maths.png";
-
+import { useUser } from "../components/UserContext"; 
 const subjectList = [
   { name: "Physics", image: physicsImg, certified: false },
   { name: "Chemistry", image: chemistryImg, certified: false },
@@ -20,9 +20,10 @@ const Jee = () => {
   const [endDate, setEndDate] = useState("");
   const [subjectCompletion, setSubjectCompletion] = useState(subjectList);
   const learningPathRef = useRef(null);
+  const {login}=useUser()
  useEffect(()=>{
-  // fetch('http://localhost:3000/checkSession',{
-    fetch(`https://studentpadmasini.onrender.com/checkSession`, {
+  fetch('http://localhost:3000/checkSession',{
+    // fetch(`https://studentpadmasini.onrender.com/checkSession`, {
     //  fetch(`https://padmasini-prod-api.padmasini.com/checkSession`, {
     method:"GET",
     credentials:'include'
@@ -59,7 +60,7 @@ const existingUser=localStorage.getItem('currentUser')
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("currentUser"));
     if (storedUser) {
-       const stdData = storedUser.selectedStandard;
+       let stdData = storedUser.selectedCourse?.JEE;
 
       if (typeof stdData === "string") {
         setStandard(stdData);
@@ -70,6 +71,8 @@ const existingUser=localStorage.getItem('currentUser')
           localStorage.setItem("currentClassJee", stdData[0]);
         } else {
           setStandard(stdData); // Multiple options → dropdown
+          const savedClass = localStorage.getItem("currentClassJee");
+        if (savedClass) setSelectedClass(savedClass);
         }
       }
       // if (storedUser.standard === "both") {
@@ -89,7 +92,7 @@ const existingUser=localStorage.getItem('currentUser')
       if (storedUser.startDate) setStartDate(formatDate(storedUser.startDate));
       if (storedUser.endDate) setEndDate(formatDate(storedUser.endDate));
     }
-    console.log(storedUser.selectedStandard)
+    //console.log(storedUser.selectedStandard)
     const savedCompletion = JSON.parse(localStorage.getItem("jeeSubjectCompletion"));
     if (savedCompletion) {
       setSubjectCompletion(savedCompletion);
@@ -250,7 +253,7 @@ const existingUser=localStorage.getItem('currentUser')
                         navigate("/JeeLearn", {
                           state: {
                             subject: subject.name,
-                            selectedClass: standard === "both" ? selectedClass : standard,
+                            selectedClass: Array.isArray(standard) ? selectedClass : standard,
                           },
                         })
                       }

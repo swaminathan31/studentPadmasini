@@ -5,7 +5,7 @@ import "./Home.css";
 // Header and branding
 import logo from '../assets/logo2.png';
 import headImage from '../assets/head.png';
-
+import { useUser } from "../components/UserContext"; 
 // Study Material Cards
 import ncertImg from '../assets/kid.jpg';
 import previousImg from '../assets/first.jpg';
@@ -27,7 +27,7 @@ const Home = () => {
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState(null);
   const [courseType, setCourseType] = useState(null);
-
+  const {login}=useUser()
   // Scroll to top on component load
  useEffect(() => {
 //localStorage.clear();
@@ -36,8 +36,11 @@ const Home = () => {
   if (storedUser) {
     const parsedUser = JSON.parse(storedUser);
     setCurrentUser(parsedUser);
-    setCourseType(parsedUser.selectedCourse);
-    console.log(parsedUser.selectedCourse)
+    if (parsedUser.selectedCourse) {
+    const courseKeys = Object.keys(parsedUser.selectedCourse);
+    setCourseType(courseKeys);
+    console.log("User courses:", courseKeys);
+  }
   }
   window.scrollTo(0, 0);
       console.log(localStorage.getItem("currentUser"))
@@ -45,8 +48,8 @@ const Home = () => {
 }, []);
 
  useEffect(()=>{
-  // fetch('http://localhost:3000/checkSession',{
-    fetch(`https://studentpadmasini.onrender.com/checkSession`, {
+  fetch('http://localhost:3000/checkSession',{
+    // fetch(`https://studentpadmasini.onrender.com/checkSession`, {
     //  fetch(`https://padmasini-prod-api.padmasini.com/checkSession`, {
     method:"GET",
     credentials:'include'
@@ -72,8 +75,8 @@ const existingUser=localStorage.getItem('currentUser')
           //localStorage.removeItem("currentClassJee");
           localStorage.clear(); // Clear all local storage
           logout();
-          setCoursesOpen(false);
-          setUserDropdownOpen(false);
+          // setCoursesOpen(false);
+          // setUserDropdownOpen(false);
           navigate("/login");
   }
     }

@@ -267,3 +267,90 @@ body {
 .logo:hover img {
   animation: floatLogo 2s ease-in-out infinite;
 }
+
+.user-name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.edit-icon {
+  color: #0a5a0a;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: color 0.2s ease;
+}
+
+.edit-icon:hover {
+  color: #b9b429;
+}
+
+/* --- New Animations --- */
+
+/* Fade-down for dropdown */
+@keyframes fadeDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Slide-in for mobile nav */
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Glow on hover for links */
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 2px #0a5a0a, 0 0 5px #0a5a0a;
+  }
+  100% {
+    text-shadow: 0 0 8px #21c421, 0 0 15px #0a5a0a;
+  }
+}
+
+/* Slight scale hover effect */
+@keyframes scaleUp {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+/* --- Apply Animations --- */
+
+/* Dropdown animation */
+.dropdown-menu {
+  animation: fadeDown 0.4s ease forwards;
+}
+
+/* Mobile nav links */
+.nav-links.active {
+  animation: slideInRight 0.4s ease forwards;
+}
+
+/* Hover glow for nav links */
+.nav-links li a:hover,
+.dropdown-toggle:hover {
+  animation: glow 0.6s ease-in-out alternate infinite;
+}
+
+/* Button hover (upgrade, logout) */
+.upgrade-btn:hover,
+.logout-btn:hover {
+  animation: scaleUp 0.2s ease forwards;
+}

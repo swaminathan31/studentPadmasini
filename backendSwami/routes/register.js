@@ -25,32 +25,38 @@ router.post('/newUser', upload.single('photo'), async (req, res) => {
   try {
     let {
       firstname, lastname, email, password,
-      mobile, dob, gender, selectedCourse, selectedStandard
+      mobile, dob, gender, selectedCourses, selectedStandards
     } = req.body;
-    console.log("selectedCourse from req.body:", selectedCourse);
-console.log("selectedStandard from req.body:", selectedStandard);
-const verified = await redisClient.get(`otp:verified:${email}`);
-    if (!verified) {
-      return res.status(400).json({ error: "Please verify your email with OTP before registering." });
-    }
+    console.log("selectedCourse from req.body:", selectedCourses);
+console.log("selectedStandard from req.body:", selectedStandards);
+// const verified = await redisClient.get(`otp:verified:${email}`);
+//     if (!verified) {
+//       return res.status(400).json({ error: "Please verify your email with OTP before registering." });
+//     }
 
+ selectedCourses = JSON.parse(selectedCourses || "[]");
+    selectedStandards = JSON.parse(selectedStandards || "[]");
+let courseMap = {};
+    selectedCourses.forEach(course => {
+      courseMap[course] = [...selectedStandards]; // copy array
+    });
     // Handle "both" case first
-if (selectedCourse === 'Both') {
-  selectedCourse = ['NEET', 'JEE'];
-} else {
-  selectedCourse = Array.isArray(selectedCourse)
-    ? selectedCourse
-    : selectedCourse ? [selectedCourse] : [];
-}
+// if (selectedCourse === 'Both') {
+//   selectedCourse = ['NEET', 'JEE'];
+// } else {
+//   selectedCourse = Array.isArray(selectedCourse)
+//     ? selectedCourse
+//     : selectedCourse ? [selectedCourse] : [];
+// }
 
-if (selectedStandard === 'Both (11th + 12th)') {
-  selectedStandard = ['11', '12'];
-} else {
-  selectedStandard = Array.isArray(selectedStandard)
-    ? selectedStandard
-    : selectedStandard ? [selectedStandard] : [];
-}
-
+// if (selectedStandard === 'Both (11th + 12th)') {
+//   selectedStandard = ['11', '12'];
+// } else {
+//   selectedStandard = Array.isArray(selectedStandard)
+//     ? selectedStandard
+//     : selectedStandard ? [selectedStandard] : [];
+// }
+console.log(courseMap)
  const dbName = "studentUsers" // 👈 e.g., jee, neet, etc.
     const connection = await getConnection(dbName);
     const User = connection.model('studentUserDetail', userSchema,'studentUserDetail'); 
@@ -68,14 +74,13 @@ if (selectedStandard === 'Both (11th + 12th)') {
       mobile, 
       dob,
       gender,
-      selectedCourse,
-      selectedStandard,
+      selectedCourse: courseMap,
       photo:photoUrl,
       isVerified:true
     });
 
     await newUser.save();
-     await redisClient.del(`otp:verified:${email}`);
+     //await redisClient.del(`otp:verified:${email}`);
     res.status(201).json({ message: "User registered successfully" });
   } catch (err) {
     console.error(err);

@@ -22,8 +22,8 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // fetch(`http://localhost:3000/logout`, {
-      fetch(`https://studentpadmasini.onrender.com/logout`, {
+    fetch(`http://localhost:3000/logout`, {
+      // fetch(`https://studentpadmasini.onrender.com/logout`, {
       // fetch(`https://padmasini-prod-api.padmasini.com/logout`, {
       method: "POST",
       credentials: "include",
@@ -44,8 +44,8 @@ const Navbar = () => {
       .catch((err) => console.log(err));
   };
  useEffect(()=>{
-  // fetch('http://localhost:3000/checkSession',{
-    fetch(`https://studentpadmasini.onrender.com/checkSession`, {
+  fetch('http://localhost:3000/checkSession',{
+    // fetch(`https://studentpadmasini.onrender.com/checkSession`, {
     //  fetch(`https://padmasini-prod-api.padmasini.com/checkSession`, {
     method:"GET",
     credentials:'include'
@@ -104,19 +104,31 @@ const existingUser=localStorage.getItem('currentUser')
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-    let selectedCourse=[]
-if(Array.isArray(currentUser?.selectedCourse)){
-  selectedCourse=currentUser?.selectedCourse
-}else {
-selectedCourse=[currentUser?.selectedCourse]
+//     let selectedCourse=[]
+// if(Array.isArray(currentUser?.selectedCourse)){
+//   selectedCourse=currentUser?.selectedCourse
+// }else {
+// selectedCourse=[currentUser?.selectedCourse]
+// }
+// let selectedStandard=[]
+// if(Array.isArray(currentUser?.selectedStandard)){
+// selectedStandard=currentUser?.selectedStandard
+// }else {
+// selectedStandard=[currentUser?.selectedStandard]
+// }
+   // Extract courses (keys of the object)
+let selectedCourse = [];
+let selectedStandard = [];
+
+if (currentUser?.selectedCourse && typeof currentUser.selectedCourse === "object") {
+  selectedCourse = Object.keys(currentUser.selectedCourse);
+
+  // Flatten all standards into one array (avoid duplicates)
+  selectedStandard = [
+    ...new Set(Object.values(currentUser.selectedCourse).flat())
+  ];
 }
-let selectedStandard=[]
-if(Array.isArray(currentUser?.selectedStandard)){
-selectedStandard=currentUser?.selectedStandard
-}else {
-selectedStandard=[currentUser?.selectedStandard]
-}
-   
+
 //console.log(selectedCourse)
   return (
     <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
@@ -146,13 +158,16 @@ selectedStandard=[currentUser?.selectedStandard]
   </span></div>
             {coursesOpen && (
               <ul className="dropdown-menu">
-                {Array.isArray(selectedCourse)&&selectedCourse?.map((course) => (
-                  <li key={course}>
-                    <Link to={`/${course}`} onClick={() => setMenuOpen(false)}>
-                      {course}
-                    </Link>
-                  </li>
-                ))}
+                {selectedCourse.map((course) => (
+      <li key={course}>
+        <Link
+          to={`/${course}`}
+          onClick={() => setMenuOpen(false)}
+        >
+          {course}
+        </Link>
+      </li>
+    ))}
               </ul>
             )}
           </li>

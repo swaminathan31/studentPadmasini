@@ -302,7 +302,7 @@ background-color: #03a020;
 .why-choose-us {
   font-size: 32px;
   font-weight: bold;
-  margin-bottom: 40px;
+  margin-bottom: 40px; 
   text-align: center;
   padding: 50px 20px;
 }
@@ -315,6 +315,7 @@ background-color: #03a020;
   font-size: 20Px;
   color: #000;
   font-style: italic;
+  margin-bottom: 20px;
 }
 .circle-layout {
   position: relative;
@@ -333,7 +334,6 @@ background-color: #03a020;
   border-radius: 50%;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
-
 
 .center-logo img {
   width: 180px;
@@ -497,38 +497,67 @@ background-color: #03a020;
   padding: 20px;
   border-radius: 15px;
   margin-top: 15px;
-  background-color: #000000 ;
-  
+  background-color: #000000;
 }
 
+/* Heading */
 .faq h2 {
-  color: #ffffff; /* Orange color for FAQ heading */
+  color: green;
+  background-color: #00000000;
   font-size: 22px;
   font-weight: bold;
-  background-color: #00000000;
   margin: auto;
   text-align: left;
 }
 
+/* FAQ items */
 .faq details {
   margin-top: 10px;
+  border-bottom: 1px solid #333;
+  padding: 10px 0;
+  transition: all 0.3s ease-in-out;
 }
 
 .faq summary {
   font-size: 18px;
-  color: #ffffff; /* Blue color for summary text */
+  color: #ffffff;
   cursor: pointer;
+  list-style: none; /* removes default arrow */
+  position: relative;
+  padding-left: 20px;
 }
 
-.faq summary:hover {
-  color: #ffffff; /* Darker blue for hover effect */
+/* Custom arrow animation */
+.faq summary::before {
+  content: "➤";
+  position: absolute;
+  left: 0;
+  transition: transform 0.3s ease;
+}
+details[open] summary::before {
+  transform: rotate(90deg);
 }
 
+/* Slide down effect */
 .faq p {
-  color: #00ff37; /* Dark text color for FAQ content */
+  color: #00ff37;
   font-size: 16px;
   margin-left: 20px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.4s ease;
 }
+
+details[open] p {
+  max-height: 500px;
+  opacity: 1;
+  transform: scale(1);
+  margin-top: 10px;
+}
+
+
 
 /* WhatsApp Chat Button */
 .whatsapp-chat-button {
@@ -585,8 +614,8 @@ background-color: #03a020;
   position: fixed;
   bottom: 100px;
   right: 20px;
-  background-color: #000000;
-  color: white;
+  background-color: #fffefe;
+  color: rgb(8, 8, 8);
   padding: 8px 12px;
   border-radius: 30px;
   font-size: 14px;
@@ -868,4 +897,114 @@ background-color: #03a020;
     padding: 10px 32px;
     gap: 10px;
   }
+}
+
+/* ===== Header Animations ===== */
+.header {
+  animation: fadeInHeader 1s ease-in-out;
+}
+
+@keyframes fadeInHeader {
+  from { opacity: 0; transform: translateY(-30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Image Animation */
+.head-image {
+  animation: zoomInImage 1.2s ease-in-out forwards;
+}
+
+@keyframes zoomInImage {
+  0%   { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* Heading Text Animation */
+.head-text {
+  animation: slideInLeft 1s ease-in-out 0.3s forwards;
+  opacity: 0; /* Prevent flash before animation */
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Sub Text Animation */
+.sub-text {
+  animation: slideInRight 1s ease-in-out 0.6s forwards;
+  opacity: 0;
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Bounce animation for button */
+@keyframes bounceBtn {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+/* Make button text bounce */
+.course-button {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+/* Apply bounce on hover */
+.course-button:hover {
+  animation: bounceBtn 0.6s ease-in-out infinite;
+}
+/* === Animations === */
+
+/* Fade + slide-up when cards load */
+@keyframes cardEntry {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Pulse effect for button */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+/* Bounce effect for arrows */
+@keyframes bounce {
+  0%, 100% { transform: translateY(-50%) scale(1); }
+  50% { transform: translateY(-55%) scale(1.1); }
+}
+
+/* === Apply animations === */
+
+/* Cards */
+.tab-card {
+  animation: cardEntry 0.6s ease forwards;
+  opacity: 0; /* Start hidden */
+}
+.tab-card:nth-child(1) { animation-delay: 0.1s; }
+.tab-card:nth-child(2) { animation-delay: 0.3s; }
+.tab-card:nth-child(3) { animation-delay: 0.5s; }
+.tab-card:nth-child(4) { animation-delay: 0.7s; }
+.tab-card:nth-child(5) { animation-delay: 0.9s; }
+
+/* Buttons (Learn More) */
+.explore-btn:hover {
+  animation: pulse 0.6s ease-in-out;
+  background-color: #228B22;
+}
+
+/* Scroll arrows bounce slowly */
+.scroll-left,
+.scroll-right {
+  animation: bounce 2s infinite ease-in-out;
 }

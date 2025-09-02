@@ -56,7 +56,7 @@ module.exports = {  redisClient };
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('MongoDB connection failed:', err));
-const forgetPassword=require("./routes/forgetPassword")
+const forgetPassword=require("./routes/forgetPassword.js")
 app.use("/",forgetPassword)
 const userRoutes = require('./routes/userRoutes');
 app.use('/', userRoutes);
